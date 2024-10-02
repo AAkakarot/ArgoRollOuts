@@ -9,11 +9,15 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+var count int
+
 func main() {
 
 	log.Printf("%v : Starting application ", time.Now())
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Router Working")
+		log.Printf("API hit %d times", count)
+		count++
 	})
 
 	fmt.Println("Starting server on :8080...")
