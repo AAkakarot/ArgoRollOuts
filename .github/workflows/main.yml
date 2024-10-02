@@ -34,10 +34,18 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push Docker image
+      # - name: Build and push Docker image
+      #   run: |
+      #     docker build -t ${{ secrets.DOCKER_USERNAME }}/go-argo-app:${{ github.sha }} .
+      #     docker push ${{ secrets.DOCKER_USERNAME }}/go-argo-app:${{ github.sha }}
+
+      - name: Build Docker Image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/go-argo-app:${{ github.sha }} .
-          docker push ${{ secrets.DOCKER_USERNAME }}/go-argo-app:${{ github.sha }}
+          docker build --no-cache -t akashkdoc/go-argo-app:latest .
+
+      - name: Push Docker Image
+        run: |
+          docker push akashkdoc/go-argo-app:latest
 
   deploy:
     runs-on: ubuntu-latest
