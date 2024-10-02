@@ -4,12 +4,19 @@ metadata:
   name: metrics-server
   namespace: kube-system
 spec:
-  selector: 
+  replicas: 1
+  selector:
     matchLabels:
-      app: go-argo-app
+      app: metrics-server  # Make sure this matches the label on the pod template
   template:
+    metadata:
+      labels:
+        app: metrics-server  # Same label here as in the selector
     spec:
       containers:
         - name: metrics-server
+          image: k8s.gcr.io/metrics-server/metrics-server:v0.6.1  # Use the appropriate image version
           args:
             - --kubelet-insecure-tls
+          ports:
+            - containerPort: 443
