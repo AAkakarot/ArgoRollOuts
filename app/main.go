@@ -20,7 +20,7 @@ func main() {
 	count = 0
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Router Working")
-		fmt.Fprintf(w, "testing")
+		fmt.Fprintf(w, "\ntesting")
 		log.Printf("API hit %d times", count)
 		count++
 	})
