@@ -1,24 +1,21 @@
 package main
 
-import "fmt"
-
-// app/main.go
-package main
-
 import (
     "fmt"
     "log"
+    "time"
     "net/http"
 )
 
-func helloHandler(w http.ResponseWriter, r *http.Request) {
-    fmt.Printf(w, "Hello, Argo CD!")
-}
-
 func main() {
-    http.HandleFunc("/", helloHandler)
-    fmt.Println("Starting server on :8080")
+
+    log.Printf("%v : Starting application ", time.Now())
+    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+        fmt.Printf(w, "Router Working")
+    })
+
+    fmt.Println("Starting server on :8080...")
     if err := http.ListenAndServe(":8080", nil); err != nil {
-        log.Printf("Failed to start server: %v", err)
+        fmt.Println("Error starting server:", err)
     }
 }
