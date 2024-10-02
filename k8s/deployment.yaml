@@ -6,7 +6,9 @@ metadata:
   labels:
     app: go-argo-app
 spec:
-  replicas: 2
+  replicas: 1
+  minReplicas: 1
+  maxReplicas: 2
   selector:
     matchLabels:
       app: go-argo-app
