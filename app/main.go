@@ -13,7 +13,10 @@ var count int
 
 func main() {
 
-	log.Printf("%v : Starting application ", time.Now())
+	loc, _ := time.LoadLocation("Asia/Kolkata")
+	now := time.Now().In(loc)
+	log.Printf("%v : Starting application ", now.Format("2006-01-02 15:04:05"))
+
 	count = 0
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Router Working")
