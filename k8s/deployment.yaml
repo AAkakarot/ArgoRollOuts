@@ -9,6 +9,11 @@ spec:
   replicas: 1
   minReplicas: 1
   maxReplicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
   selector:
     matchLabels:
       app: go-argo-app
