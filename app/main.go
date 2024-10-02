@@ -14,8 +14,10 @@ var count int
 func main() {
 
 	log.Printf("%v : Starting application ", time.Now())
+	count = 0
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Router Working")
+		fmt.Fprintf(w, "testing")
 		log.Printf("API hit %d times", count)
 		count++
 	})
