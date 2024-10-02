@@ -12,11 +12,4 @@ spec:
     metadata:
       labels:
         app: metrics-server  # Same label here as in the selector
-    spec:
-      containers:
-        - name: metrics-server
-          image: k8s.gcr.io/metrics-server/metrics-server:v0.6.1  # Use the appropriate image version
-          args:
-            - --kubelet-insecure-tls
-          ports:
-            - containerPort: 443
+
