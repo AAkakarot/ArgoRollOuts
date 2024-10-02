@@ -7,15 +7,23 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: metrics-server  # Make sure this matches the label on the pod template
+      app: metrics-server
   template:
     metadata:
       labels:
-        app: metrics-server  # Same label here as in the selector
-  containers:
-    - name: metrics-server
-      image: k8s.gcr.io/metrics-server/metrics-server:v0.6.1  # Use the appropriate image version
-      args:
-      - --kubelet-insecure-tls
-      ports:
-        - containerPort: 443
+        app: metrics-server
+    spec:
+      containers:
+        - name: metrics-server
+          image: k8s.gcr.io/metrics-server/metrics-server:v0.6.1
+          args:
+            - --kubelet-insecure-tls
+          ports:
+            - containerPort: 443
+          resources:
+            limits:
+              cpu: "100m"
+              memory: "200Mi"
+            requests:
+              cpu: "50m"
+              memory: "100Mi"
