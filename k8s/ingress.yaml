@@ -6,18 +6,6 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  selector:
-    app: ingress-nginx
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-      nodePort: 30080   # <-- specify a NodePort
-    - protocol: TCP
-      port: 443
-      targetPort: 443
-      nodePort: 30443   # <-- specify a NodePort
-  type: NodePort
   ingressClassName: nginx
   rules:
     - host: go-argo-app.local
