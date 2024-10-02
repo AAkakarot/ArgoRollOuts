@@ -49,6 +49,7 @@ jobs:
 
       - name: Set up KUBECONFIG
         run: |
+          mkdir -p $HOME/.kube  # Create the .kube directory
           echo "${{ secrets.KUBECONFIG }}" | base64 -d > $HOME/.kube/config
 
       - name: Apply Kubernetes manifests
