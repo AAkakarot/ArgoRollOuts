@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ArgoRollOuts.iml" filepath="$PROJECT_DIR$/.idea/ArgoRollOuts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/go-argo-app.iml" filepath="$PROJECT_DIR$/.idea/go-argo-app.iml" />
     </modules>
   </component>
 </project>
