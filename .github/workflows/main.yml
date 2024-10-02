@@ -46,11 +46,3 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Set up KUBECONFIG
-        run: |
-          mkdir -p $HOME/.kube  # Create the .kube directory
-          echo "${{ secrets.KUBECONFIG }}" | base64 -d > $HOME/.kube/config
-
-      - name: Apply Kubernetes manifests
-        run: kubectl apply -f k8s/deployment.yaml
